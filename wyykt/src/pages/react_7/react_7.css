@@ -1,0 +1,7 @@
+
+.confirm_box{ position: fixed;top:50%; left:50%; transform: translate(-50%,-50%); min-width: 300px; padding: 20px; text-align: center; box-shadow: 0 0 5px rgba(0,0,0,.2);}
+
+.confirm_box .title{ line-height: 40px; }
+
+.confirm_box button{ margin:0 20px; width: 80px;line-height: 30px;}
+

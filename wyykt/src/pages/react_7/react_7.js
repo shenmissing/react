@@ -17,55 +17,56 @@ async componentDidMount(){
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-function confirm(msg){   
-    return new Promise((resolve, reject)=>{
-        let success = ()=>{
+import './react_7.css'
+function confirm(msg) {
+    return new Promise((resolve, reject) => {
+        let success = () => {
             console.log('success')
-            resolve('success')            
+            resolve('success')
+            ReactDOM.unmountComponentAtNode(dom);
         }
-        let cancel = ()=>{
+        let cancel = () => {
             console.log('cancel')
             reject('cancel')
             ReactDOM.unmountComponentAtNode(dom);
         }
         let confirmDom = (
-            <div>
-                { msg }
+            <div className="confirm_box">
+                <p className="title">{msg}</p>
                 <div>
-                    <button onClick={ cancel }>取消</button>
-                    <button onClick={ success }>确定</button>
+                    <button onClick={cancel}>取消</button>
+                    <button onClick={success}>确定</button>
                 </div>
             </div>
         )
         let dom = document.createElement('div')
         document.body.appendChild(dom)
-        ReactDOM.render(confirmDom, dom);       
+        ReactDOM.render(confirmDom, dom);
         resolve('mount')
     })
 }
 
 
-class React_7 extends React.Component{
-    constructor(props){
+class React_7 extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {}
     }
-    async ConfirmLoaded(){              
+    async ConfirmLoaded() {
         let res = await confirm('确定删除吗')
         console.log(res)
-        if(res){
+        if (res) {
             console.log('是')
-        }else{
+        } else {
             console.log('否')
-        }        
+        }
     }
-    componentDidMount(){
+    componentDidMount() {
         this.ConfirmLoaded()
     }
-    render(){
-        return(
-            <div>               
+    render() {
+        return (
+            <div>
                 React_7
             </div>
         )
